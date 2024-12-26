@@ -9,7 +9,7 @@ files {
     "nui/script.js",
     "nui/config.js",
     "nui/background.mp4",
-    "nui/background.jpg"
+    "nui/horserunnig.gif"
 }
 
 ui_page "nui/index.html"

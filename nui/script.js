@@ -2,8 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const video = document.getElementById("background-video");
     const progressBar = document.getElementById("progress-bar");
     const progressHorse = document.getElementById("progress-horse");
-    const progressContainer = document.getElementById("progress-container");
-
     const videoTimer = config.videoTimer || 10000; 
 
 
