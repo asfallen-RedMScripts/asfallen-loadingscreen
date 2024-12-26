@@ -9,10 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof invokeNative !== 'undefined') {
             invokeNative('startMusic', '');
             invokeNative('setAudioSubmixEffectParamInt', 0, 0, 1, 0); 
-            console.log("RedM sesleri kapatıldı.");
+           // console.log("RedM sesleri kapatıldı.");
         }
     } catch (error) {
-        console.log("RedM ses kontrolü hatası:", error);
+       // console.log("RedM ses kontrolü hatası:", error);
     }
 
  
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
    
     video.addEventListener('ended', closeLoadingScreen);
     video.addEventListener('error', () => {
-        console.log("Video yüklenemedi.");
+     //   console.log("Video yüklenemedi.");
         closeLoadingScreen();
     });
 });
@@ -53,10 +53,10 @@ function closeLoadingScreen() {
     try {
         if (typeof invokeNative !== 'undefined') {
             invokeNative('setAudioSubmixEffectParamInt', 0, 0, 1, 1);
-            console.log("RedM sesleri geri açıldı.");
+          //  console.log("RedM sesleri geri açıldı.");
         }
     } catch (error) {
-        console.log("RedM ses geri açma hatası:", error);
+       // console.log("RedM ses geri açma hatası:", error);
     }
 
     if (video) {
@@ -66,6 +66,6 @@ function closeLoadingScreen() {
 
     document.body.style.display = 'none';
 
-    console.log("NUI kapatıldı.");
+    //console.log("NUI kapatıldı.");
 
 }
