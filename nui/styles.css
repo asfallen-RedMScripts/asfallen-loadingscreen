@@ -1,3 +1,4 @@
+/* Updated Colors and Fonts for RDR Theme */
 
 * {
     margin: 0;
@@ -10,13 +11,13 @@ body {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background: #2b1d0e; 
-    color: #f5e9d0;
+    background: #000000; /* Black background for RDR theme */
+    color: #ffffff; /* White for text */
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
-
 
 #background-video {
     position: fixed;
@@ -28,8 +29,33 @@ body {
     height: auto;
     z-index: -1;
     object-fit: cover;
+    filter: brightness(0.6); /* Slightly dimmed for readability */
 }
 
+.info-box {
+    text-align: center;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5); /* Transparent dark background */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+    max-width: 80%;
+}
+
+.info-box h1 {
+    font-size: 3rem;
+    color: #ff0000; /* Red for RDR highlight */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid #ff0000; /* Cursor effect */
+    width: 0;
+    animation: typing 4s steps(30, end) infinite alternate, blink 0.5s step-end infinite alternate;
+}
+
+.info-box p {
+    font-size: 1.5rem;
+    color: #ffffff; /* White for subtitle */
+}
 
 .progress-container {
     position: fixed;
@@ -38,17 +64,17 @@ body {
     transform: translateX(-50%);
     width: 80%;
     height: 20px;
-    background-color: rgba(43, 29, 14, 0.6); 
+    background-color: rgba(0, 0, 0, 0.6); /* Transparent black background */
     border-radius: 10px;
     overflow: hidden;
     z-index: 1;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
 }
 
 .progress-bar {
     width: 0%;
     height: 100%;
-    background-color: #d4a373; 
+    background-color: #ff0000; /* Red progress */
     transition: width linear;
     border-radius: 10px 0 0 10px;
 }
@@ -62,11 +88,47 @@ body {
     transform: scaleX(-1);
 }
 
+.title-banner {
+    position: absolute;
+    top: 10%;
+    text-align: center;
+    color: #ffffff; /* White for title */
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.subtitle {
+    position: absolute;
+    top: 15%;
+    text-align: center;
+    color: #ff0000; /* Red subtitle */
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
 @keyframes horse-move {
     from {
         left: 0%;
     }
     to {
         left: 100%;
+    }
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink {
+    from {
+        border-color: transparent;
+    }
+    to {
+        border-color: #ff0000;
     }
 }
