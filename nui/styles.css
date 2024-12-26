@@ -152,7 +152,7 @@ body {
 	clip-path: var(--polygonH);
 	-webkit-clip-path: var(--polygonH);
 	overflow: hidden;
-	position:relative;
+	position:fixed;
 	width: 5em;
 	height: 9em;
 	z-index: 0;
@@ -163,8 +163,8 @@ body {
     
 	font-size: 10x;
 
-    bottom: -380px;
-    left: 42%;
+    bottom: -40px;
+    left: 90%;
         
 }
 .hourglass:before, .hourglass:after {

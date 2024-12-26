@@ -1,6 +1,6 @@
 const config = {
     startWith: "video",    
     videoAutoClose: true, 
-    videoTimer: 30000,     
+    videoTimer: 45000,     
     music: "music.mp3"    
 };
