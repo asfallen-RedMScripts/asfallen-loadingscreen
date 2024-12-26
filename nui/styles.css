@@ -1,4 +1,3 @@
-/* Updated Colors and Fonts for RDR Theme */
 
 * {
     margin: 0;
@@ -11,8 +10,8 @@ body {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background: #000000; /* Black background for RDR theme */
-    color: #ffffff; /* White for text */
+    background: #000000; 
+    color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,9 +34,9 @@ body {
 .info-box {
     text-align: center;
     padding: 10px;
-    background: rgba(0, 0, 0, 0.5); /* Transparent dark background */
+    background: rgba(0, 0, 0, 0.2); 
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     max-width: 80%;
 }
 
@@ -64,7 +63,7 @@ body {
     transform: translateX(-50%);
     width: 80%;
     height: 20px;
-    background-color: rgba(0, 0, 0, 0.6); /* Transparent black background */
+    background-color: rgba(0, 0, 0, 0.6); 
     border-radius: 10px;
     overflow: hidden;
     z-index: 1;
@@ -86,6 +85,7 @@ body {
     font-size: 1.5em;
     animation: horse-move linear;
     transform: scaleX(-1);
+    filter: grayscale(100%);
 }
 
 .title-banner {
@@ -105,6 +105,7 @@ body {
     font-size: 1.5rem;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
+
 
 @keyframes horse-move {
     from {
