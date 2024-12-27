@@ -1,5 +1,4 @@
-const config = {
-    startWith: "video",    
+const config = { 
     videoAutoClose: true, 
     videoTimer: 45000,     
 };
