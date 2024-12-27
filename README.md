@@ -3,7 +3,6 @@
 ## Overview
 
 This project provides a visually engaging and interactive loading screen for RedM servers. It features a dynamic video background, a progress bar with a running horse animation, and other stylistic elements to enhance the user experience while waiting for the server to load.
-You must add your video and maybe gif.
 
 ## Features
 
@@ -45,6 +44,11 @@ const config = {
     videoTimer: 45000,         // Duration of the loading screen in milliseconds
 };
 ```
+
+## Note on Background Video
+
+The provided video (`background.mp4`) is an example sourced from YouTube. For production use, replace it with your own custom video to avoid copyright issues.
+
 
 ## Dependencies
 
