@@ -2,32 +2,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const video = document.getElementById("background-video");
     const progressBar = document.getElementById("progress-bar");
     const progressHorse = document.getElementById("progress-horse");
-    const videoTimer = config.videoTimer || 10000; 
+    const videoTimer = config.videoTimer || 10000;
 
-
-    
- 
-    if (videoElement) {
-        videoElement.volume = config.videoVolume;
-    }
-
-    try {
-        if (typeof invokeNative !== 'undefined') {
-            invokeNative('startMusic', '');
-            invokeNative('setAudioSubmixEffectParamInt', 0, 0, 1, 0); 
-           // console.log("RedM sesleri kapatıldı.");
+    // Video başladığında RedM seslerini kapat
+    function muteRedMSounds() {
+        try {
+            if (typeof invokeNative !== 'undefined') {
+                invokeNative('startMusic', '');
+                invokeNative('setAudioSubmixEffectParamInt', 0, 0, 0, 0);
+            }
+        } catch (error) {
+           console.error(error);
         }
-    } catch (error) {
-       // console.log("RedM ses kontrolü hatası:", error);
     }
 
- 
+    // Video bittiğinde RedM seslerini aç
+    function unmuteRedMSounds() {
+        try {
+            if (typeof invokeNative !== 'undefined') {
+                invokeNative('setAudioSubmixEffectParamInt', 0, 0, 1, 1);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    // Video başladığında sesleri kapat
+    video.addEventListener('play', muteRedMSounds);
+
     let startTime = Date.now();
     const interval = setInterval(() => {
         let elapsed = Date.now() - startTime;
-        let progress = Math.min(elapsed / videoTimer, 1); 
+        let progress = Math.min(elapsed / videoTimer, 1);
 
-      
         progressBar.style.width = `${progress * 100}%`;
         progressHorse.style.left = `${progress * 100}%`;
 
@@ -35,26 +42,31 @@ document.addEventListener('DOMContentLoaded', () => {
             clearInterval(interval);
             closeLoadingScreen();
         }
-    }, 16); 
+    }, 16);
 
-    
+
     video.play()
-        .then(() => console.log("Video started"))
-        .catch(error => console.log("Video autoplay prevented:", error));
- const videoElement = document.getElementById("background-video");
-    
-    // Config'deki sesi uygula
-    if (videoElement) {
-        videoElement.volume = config.videoVolume;
+        .then(() => {
+            muteRedMSounds();
+        })
+        .catch(error => console.error(error));
+
+  
+    if (video) {
+        video.volume = config.videoVolume;
     }
-   
-    video.addEventListener('ended', closeLoadingScreen);
+
+ 
+    video.addEventListener('ended', () => {
+        unmuteRedMSounds();
+        closeLoadingScreen();
+    });
+    
     video.addEventListener('error', () => {
-     //   console.log("Video yüklenemedi.");
+        unmuteRedMSounds();
         closeLoadingScreen();
     });
 });
-
 
 function closeLoadingScreen() {
     const video = document.getElementById("background-video");
@@ -64,10 +76,9 @@ function closeLoadingScreen() {
     try {
         if (typeof invokeNative !== 'undefined') {
             invokeNative('setAudioSubmixEffectParamInt', 0, 0, 1, 1);
-          //  console.log("RedM sesleri geri açıldı.");
         }
     } catch (error) {
-       // console.log("RedM ses geri açma hatası:", error);
+        console.error(error);
     }
 
     if (video) {
@@ -76,7 +87,4 @@ function closeLoadingScreen() {
     }
 
     document.body.style.display = 'none';
-
-    //console.log("NUI kapatıldı.");
-
 }
