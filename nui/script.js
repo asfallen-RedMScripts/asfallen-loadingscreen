@@ -5,6 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const videoTimer = config.videoTimer || 10000; 
 
 
+    
+ 
+    if (videoElement) {
+        videoElement.volume = config.videoVolume;
+    }
+
     try {
         if (typeof invokeNative !== 'undefined') {
             invokeNative('startMusic', '');
@@ -35,7 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
     video.play()
         .then(() => console.log("Video started"))
         .catch(error => console.log("Video autoplay prevented:", error));
-
+ const videoElement = document.getElementById("background-video");
+    
+    // Config'deki sesi uygula
+    if (videoElement) {
+        videoElement.volume = config.videoVolume;
+    }
    
     video.addEventListener('ended', closeLoadingScreen);
     video.addEventListener('error', () => {
